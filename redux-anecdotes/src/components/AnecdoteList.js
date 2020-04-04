@@ -16,21 +16,24 @@ const AnecdoteList = () => {
     return (
         <div>
             {
-                []
-                    .concat(anecdotes)
-                    .filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
-                    .sort((a, b) => b.votes - a.votes)
-                    .map(anecdote =>
-                        <div key={anecdote.id}>
-                        <div>
-                            {anecdote.content}
-                        </div>
-                        <div>
-                            has {anecdote.votes}
-                            <button onClick={() => vote(anecdote)}>vote</button>
-                        </div>
-                        </div>
-                    )
+                anecdotes.length ?
+                    []
+                        .concat(anecdotes)
+                        .filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
+                        .sort((a, b) => b.votes - a.votes)
+                        .map(anecdote =>
+                            <div key={anecdote.id}>
+                            <div>
+                                {anecdote.content}
+                            </div>
+                            <div>
+                                has {anecdote.votes}
+                                <button onClick={() => vote(anecdote)}>vote</button>
+                            </div>
+                            </div>
+                        )
+                    :
+                    <p>Loading anecdotes...</p>
             }
         </div>
     );
