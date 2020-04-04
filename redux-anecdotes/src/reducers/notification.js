@@ -9,19 +9,19 @@ const notification = (state = null, action) => {
     }
 };
 
-export const setNotification = message => (
-    {
-        type: 'SET_NOTIFICATION',
-        payload: {
-            message
-        }
-    }
-);
+export const setNotification = (message, seconds) => {
+    return dispatch => {
+        dispatch({
+            type: 'SET_NOTIFICATION',
+            payload: {
+                message
+            }
+        });
 
-export const removeNotification = () => (
-    {
-        type: 'REMOVE_NOTIFICATION'
-    }  
-);
+        setTimeout(() => {
+            dispatch({ type: 'REMOVE_NOTIFICATION' });
+        }, seconds * 1000);
+    };
+};
 
 export default notification;
