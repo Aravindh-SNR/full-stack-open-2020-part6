@@ -13,8 +13,7 @@ const Notification = () => {
       }, 5000);
       return () => clearTimeout(timer);
     }
-    // eslint-disable-next-line
-  }, [notification]);
+  });
 
   const style = {
     border: 'solid',
